@@ -4,13 +4,12 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 from google import genai
-client=genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
 
 
 st.set_page_config(page_title="Insurance Response Predictor", page_icon="🚗", layout="wide")
 
-client=genai.Client(api_key=st.secrets[GEMINI_API_KEY])
+client=genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 model = joblib.load('INSURANCE_PREDICTION_model.pkl')
 columns=joblib.load('model_columns.pkl')
 scaler = joblib.load('SCALER1.pkl')
