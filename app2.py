@@ -129,8 +129,8 @@ if st.button('🔮 Predict', use_container_width=True):
    with st.spinner("Generating AI insights..."):
         prompt = (
             f"A machine learning model predicted that a customer with Age {age},"
-            f" Vehicle Age {vehicle_age_input}, Vehicle Damage"
-            f" {vehicle_damage_input}, and Annual Premium {annual_premium}"
+            f" Vehicle Age {vehicle_age}, Vehicle Damage"
+            f" {damage}, and Annual Premium {premium}"
             f" {result_text} vehicle insurance. Provide a brief, professional"
             " 2-sentence explanation for why this outcome makes sense based on"
             " standard insurance risk factors."
