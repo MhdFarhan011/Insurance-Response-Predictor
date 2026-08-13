@@ -139,7 +139,7 @@ if st.button('🔮 Predict', use_container_width=True):
 
         try:
             response = client.models.generate_content(
-                model="gemini-2.0-flash",
+                model="gemini-2.5-flash-lite",
                 contents=prompt,
             )
             ai_explanation = response.text
