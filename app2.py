@@ -4,12 +4,13 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 from google import genai
-client=genai.Client(api_key=st.secrets[])
+client=genai.Client(api_key=st.secrets[GEMINI_API_KEY])
+
 
 
 st.set_page_config(page_title="Insurance Response Predictor", page_icon="🚗", layout="wide")
 
-
+client=genai.Client(api_key=st.secrets[GEMINI_API_KEY])
 model = joblib.load('INSURANCE_PREDICTION_model.pkl')
 columns=joblib.load('model_columns.pkl')
 scaler = joblib.load('SCALER1.pkl')
@@ -125,6 +126,28 @@ if st.button('🔮 Predict', use_container_width=True):
         ))
          fig.update_layout(height=300,template='plotly_dark', margin=dict(t=60, b=20,l=30,r=30))
          st.plotly_chart(fig, use_container_width=True)
+
+   with st.spinner("Generating AI insights..."):
+        prompt = (
+            f"A machine learning model predicted that a customer with Age {age},"
+            f" Vehicle Age {vehicle_age_input}, Vehicle Damage"
+            f" {vehicle_damage_input}, and Annual Premium {annual_premium}"
+            f" {result_text} vehicle insurance. Provide a brief, professional"
+            " 2-sentence explanation for why this outcome makes sense based on"
+            " standard insurance risk factors."
+        )
+
+        try:
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt,
+            )
+            ai_explanation = response.text
+        except Exception as e:
+            ai_explanation = f"⚠️ Could not generate AI insights: {e}"
+
+        st.subheader("🤖 AI Risk Insights")
+        st.write(ai_explanation)
 
   
         
