@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 from google import genai
-client=genai.Client(api_key=st.secrets[GEMINI_API_KEY])
+client=genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
 
 
