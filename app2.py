@@ -4,7 +4,9 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 
+
 st.set_page_config(page_title="Insurance Response Predictor", page_icon="🚗", layout="wide")
+
 
 model = joblib.load('INSURANCE_PREDICTION_model.pkl')
 columns=joblib.load('model_columns.pkl')
@@ -122,4 +124,5 @@ if st.button('🔮 Predict', use_container_width=True):
          fig.update_layout(height=300,template='plotly_dark', margin=dict(t=60, b=20,l=30,r=30))
          st.plotly_chart(fig, use_container_width=True)
 
+  
         
