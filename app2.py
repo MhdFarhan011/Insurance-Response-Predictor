@@ -76,9 +76,10 @@ if st.button('🔮 Predict', use_container_width=True):
 
    if pred == 1:
           st.success("✅ Customer is LIKELY to purchase insurance")
+          result_text='WILL PURCHASE'
    else:
           st.error("❌ Customer is UNLIKELY to purchase insurance")
-
+         result_text='WILL NOT PURCHASE'
    m1, m2 = st.columns(2)
    m1.metric("Purchase Probability", f"{prob[1]*100:.1f}%")
    m2.metric("Non-Purchase Probability", f"{prob[0]*100:.1f}%") 
